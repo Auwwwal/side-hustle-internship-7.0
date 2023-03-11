@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Simple Form</title>
+	<style type="text/css">
+		form {
+			max-width: 600px;
+			margin: 0 auto;
+			text-align: center;
+		}
+		input[type=text], input[type=email], input[type=tel], input[type=password] {
+			padding: 12px 20px;
+			margin: 8px 0;
+			box-sizing: border-box;
+			border-radius: 5px;
+			border: 1px solid #ccc;
+			width: 100%;
+			font-size: 16px;
+		}
+		input[type=submit] {
+			background-color: #7fa180;
+			color: white;
+			padding: 14px 20px;
+			margin: 8px 0;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			font-size: 16px;
+		}
+		input[type=submit]:hover {
+			background-color: #18aa1f;
+		}
+		label {
+			font-size: 16px;
+		}
+		.error {
+			color: red;
+		}
+		.success {
+			color: green;
+		}
+	</style>
+</head>
+<body background="https://images.pexels.com/photos/1229861/pexels-photo-1229861.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
+	<div class="form-divider">
+    <form id="myForm" onsubmit="return validateForm()">
+        &nbsp;&nbsp;<br>
+        <br>
+		<label for="name">Name</label><br>
+		<input type="text" id="name" name="name" required><br>
+
+		<label for="email">Email</label><br>
+		<input type="email" id="email" name="email" required><br>
+
+		<label for="phone">Phone Number</label><br>
+		<input type="tel" id="phone" name="phone" required><br>
+
+		<label for="gender">Gender</label><br>
+		<input type="radio" id="male" name="gender" value="male" required="*">
+		<label for="male">Male</label>
+		<input type="radio" id="female" name="gender" value="female">
+		<label for="female">Female</label>
+		<input type="radio" id="other" name="gender" value="other">
+		<label for="other">Other</label><br>
+
+		<label for="password">Password</label><br>
+		<input type="password" id="password" name="password" required="*"><br>
+
+		<input type="submit" value="Submit">
+	</form>
+</div>
+	<script type="text/javascript">
+		function validateForm() {
+			var name = document.forms["myForm"]["name"].value;
+			var email = document.forms["myForm"]["email"].value;
+			var phone = document.forms["myForm"]["phone"].value;
+			var password = document.forms["myForm"]["password"].value;
+
+			if (name == "") {
+				alert("Name must be filled out");
+				document.getElementById("name").classList.add("error");
+				return false;
+			}
+			if (email == "") {
+				alert("Email must be filled out");
+				document.getElementById("email").classList.add("error");
+				return false;
+			}
+			if (!validateEmail(email)) {
+				alert("Invalid email format");
+				document.getElementById("email").classList.add("error");
+				return false;
+			}
+			if (phone == "") {
+				alert("Phone number must be filled out");
+				document.getElementById("phone").classList.add("error");
+				return false;
+			}
+			if (password == "") {
+				alert("Password must be filled out");
+            }
+
+        }
